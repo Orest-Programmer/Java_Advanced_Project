@@ -4,6 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import ua.lviv.lgs.periodicals.domain.Bucket;
 
-public interface BucketReposityory extends JpaRepository<Bucket, Integer>{
-
+public interface BucketRepository extends JpaRepository<Bucket, Integer>{
 }
