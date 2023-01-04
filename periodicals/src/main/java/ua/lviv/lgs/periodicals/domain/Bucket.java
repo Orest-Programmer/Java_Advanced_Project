@@ -1,6 +1,7 @@
 package ua.lviv.lgs.periodicals.domain;
 
 import java.sql.Date;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,40 +10,34 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "bucket")
 public class Bucket {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	@Column(name = "user_id")
+	private Integer userId;
+	@Column(name = "product_id")
+	private Integer productId;
 
-	private User user;
-	
-	private Periodical periodical;
-	
 	@Column(name = "purchase_date")
 	private Date purchaseDate;
 
 	public Bucket() {
 	}
 
-	public Bucket(Integer id) {
-		this.id = id;
-	}
-
-	public Bucket(User user, Periodical periodical, Date purchaseDate) {
-		super();
-		this.user = user;
-		this.periodical = periodical;
+	public Bucket(Integer userId, Integer productId, Date purchaseDate) {
+		this.userId = userId;
+		this.productId = productId;
 		this.purchaseDate = purchaseDate;
 	}
 
-	public Bucket(Integer id, User user, Periodical periodical, Date purchaseDate) {
+	public Bucket(Integer id, Integer userId, Integer productId, Date purchaseDate) {
 		super();
 		this.id = id;
-		this.user = user;
-		this.periodical = periodical;
+		this.userId = userId;
+		this.productId = productId;
 		this.purchaseDate = purchaseDate;
 	}
 
@@ -54,20 +49,20 @@ public class Bucket {
 		this.id = id;
 	}
 
-	public User getUser() {
-		return user;
+	public Integer getUserId() {
+		return userId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
-	public Periodical getPeriodical() {
-		return periodical;
+	public Integer getProductId() {
+		return productId;
 	}
 
-	public void setPeriodical(Periodical periodical) {
-		this.periodical = periodical;
+	public void setProductId(Integer productId) {
+		this.productId = productId;
 	}
 
 	public Date getPurchaseDate() {
@@ -80,13 +75,7 @@ public class Bucket {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((periodical == null) ? 0 : periodical.hashCode());
-		result = prime * result + ((purchaseDate == null) ? 0 : purchaseDate.hashCode());
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
-		return result;
+		return Objects.hash(id, productId, purchaseDate, userId);
 	}
 
 	@Override
@@ -98,33 +87,16 @@ public class Bucket {
 		if (getClass() != obj.getClass())
 			return false;
 		Bucket other = (Bucket) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (periodical == null) {
-			if (other.periodical != null)
-				return false;
-		} else if (!periodical.equals(other.periodical))
-			return false;
-		if (purchaseDate == null) {
-			if (other.purchaseDate != null)
-				return false;
-		} else if (!purchaseDate.equals(other.purchaseDate))
-			return false;
-		if (user == null) {
-			if (other.user != null)
-				return false;
-		} else if (!user.equals(other.user))
-			return false;
-		return true;
+		return Objects.equals(id, other.id) && Objects.equals(productId, other.productId)
+				&& Objects.equals(purchaseDate, other.purchaseDate) && Objects.equals(userId, other.userId);
 	}
 
 	@Override
 	public String toString() {
-		return "Bucket [id=" + id + ", user=" + user + ", periodical=" + periodical + ", purchaseDate=" + purchaseDate
+		return "Bucket [id=" + id + ", userId=" + userId + ", productId=" + productId + ", purchaseDate=" + purchaseDate
 				+ "]";
 	}
+
+	
 
 }

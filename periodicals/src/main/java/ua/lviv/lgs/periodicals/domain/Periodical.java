@@ -10,20 +10,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "periodical")
 public class Periodical {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	
-	@Column
+
+	@Column(name = "name")
 	private String name;
-	
-	@Column
+
+	@Column(name = "description")
 	private String description;
-	
-	@Column
+
+	@Column(name = "price")
 	private Double price;
-	
 
 	public Periodical() {
 	}
@@ -72,7 +71,6 @@ public class Periodical {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-
 
 	@Override
 	public int hashCode() {

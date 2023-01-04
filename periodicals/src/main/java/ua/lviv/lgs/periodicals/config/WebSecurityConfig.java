@@ -19,33 +19,6 @@ import ua.lviv.lgs.periodicals.security.CustomUserDetailsService;
 @ComponentScan(basePackageClasses=CustomUserDetailsService.class)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
-//	@Autowired
-//	CustomUserDetailsService userDetailsService;
-//
-//	@Bean
-//	public PasswordEncoder passwordEncoder() {
-//		return new BCryptPasswordEncoder();
-//	}
-//
-//	public void configAuthentification(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-//	}
-//
-//
-//	@Autowired
-//	private DataSource dataSource;
-//
-//	@Autowired
-//	public void configureGlobal(AuthenticationManagerBuilder auth) 
-//	  throws Exception {
-//	    auth.jdbcAuthentication().dataSource(dataSource)
-//	      .withDefaultSchema()
-//	      .withUser("user").password(passwordEncoder().encode("password")).roles("ROLE_USER")
-//	      .and()
-//	      .withUser("admin").password(passwordEncoder().encode("password")).roles("ROLE_USER", "ROLE_ADMIN");
-//	}
-
-	
 	@Autowired
 	private UserDetailsService userDetailsService;
 	
@@ -64,7 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 		.antMatchers("/").permitAll()
-		.antMatchers("/home").access("hasRole('ROLE_USER')  or hasRole('ROLE_ADMIN')")
+		.antMatchers("/home").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 		.antMatchers("/buckets").access("hasRole('ROLE_USER')")
 		.antMatchers("/create-periodical").access("hasRole('ROLE_ADMIN')")
 		.anyRequest().permitAll().and()

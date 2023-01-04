@@ -1,5 +1,6 @@
 package ua.lviv.lgs.periodicals.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -8,18 +9,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "user")
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-
+	@Column(name = "email")
 	private String email;
+	@Column(name = "first_name")
 	private String firstName;
+	@Column(name = "last_name")
 	private String lastName;
+	@Column(name = "password")
 	private String password;
+	@Column(name = "password_confirm")
 	private String passwordConfirm;
 
 	@Enumerated(EnumType.STRING)
