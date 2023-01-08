@@ -11,18 +11,18 @@ import org.springframework.util.StringUtils;
 import ua.lviv.lgs.periodicals.domain.User;
 
 public class CustomUserDetails extends User implements UserDetails{
-
+	
 	/**
 	 * 
 	 */
-	
 	private static final long serialVersionUID = 1L;
 	private List<String> userRoles;
 	
-	public CustomUserDetails(User user, List<String> userRoles) {
+	public CustomUserDetails (User user, List<String> userRoles) {
 		super(user);
 		this.userRoles = userRoles;
 	}
+	
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -32,7 +32,7 @@ public class CustomUserDetails extends User implements UserDetails{
 
 	@Override
 	public String getUsername() {
-		return super.getFirstName();
+		return super.getEmail();
 	}
 
 	@Override
@@ -54,5 +54,5 @@ public class CustomUserDetails extends User implements UserDetails{
 	public boolean isEnabled() {
 		return true;
 	}
-
 }
+

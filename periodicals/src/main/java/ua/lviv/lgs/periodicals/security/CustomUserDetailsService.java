@@ -1,7 +1,6 @@
 package ua.lviv.lgs.periodicals.security;
 
 import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +12,9 @@ import org.springframework.stereotype.Service;
 import ua.lviv.lgs.periodicals.dao.UserRepository;
 import ua.lviv.lgs.periodicals.domain.User;
 
-@Service("customUserServiceDetails")
+@Service("customUserDetailsService")
 public class CustomUserDetailsService implements UserDetailsService {
-	/**
-	 * 
-	 */
 
-	
 	@Autowired
 	private UserRepository userRepository;
 
@@ -35,4 +30,5 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 		throw new UsernameNotFoundException("No user present with useremail:" + email);
 	}
+
 }

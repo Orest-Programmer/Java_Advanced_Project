@@ -10,18 +10,18 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "periodical")
 public class Periodical {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-
-	@Column(name = "name")
+	
+	@Column
 	private String name;
-
-	@Column(name = "description")
+	
+	@Column
 	private String description;
-
-	@Column(name = "price")
+	
+	@Column
 	private Double price;
 
 	public Periodical() {

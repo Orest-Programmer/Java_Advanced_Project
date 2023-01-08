@@ -8,17 +8,12 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+
 @EnableAutoConfiguration
 @Configuration
 @ComponentScan
-public class WebMvcConfig implements WebMvcConfigurer {
+public class WebMvcConfig implements WebMvcConfigurer{
 
-//	@Override
-//	public void addViewControllers(ViewControllerRegistry registry) {
-//		registry.addViewController("/").setViewName("home");
-//		registry.addViewController("login").setViewName("login");
-//		registry.addViewController("/403").setViewName("403");
-//	}
 	
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
@@ -27,13 +22,13 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		registry.addViewController("login").setViewName("login");
 		registry.addViewController("/403").setViewName("403");
 	}
-
+	
 	@Bean
-	public InternalResourceViewResolver viewResorver() {
+	public InternalResourceViewResolver viewResolver() {
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-		resolver.setPrefix("/jsp");
+		resolver.setPrefix("/jsp/");
 		resolver.setSuffix(".jsp");
 		return resolver;
 	}
-
+	
 }
